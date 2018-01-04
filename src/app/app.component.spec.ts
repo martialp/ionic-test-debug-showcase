@@ -10,6 +10,10 @@ import {
   StatusBarMock,
   SplashScreenMock
 } from '../../test-config/mocks-ionic';
+import { TranslateServiceMock } from "../../test-config/mocks-libs";
+import { SettingsMock } from "../../test-config/mocks-providers";
+import { TranslateService } from "@ngx-translate/core";
+import { Settings } from "../providers/settings/settings";
 
 describe('MyApp Component', () => {
   let fixture;
@@ -24,7 +28,10 @@ describe('MyApp Component', () => {
       providers: [
         { provide: StatusBar, useClass: StatusBarMock },
         { provide: SplashScreen, useClass: SplashScreenMock },
-        { provide: Platform, useClass: PlatformMock }
+        { provide: Platform, useClass: PlatformMock },
+        { provide: TranslateService, useClass: TranslateServiceMock },
+        { provide: Settings, useClass: SettingsMock }
+
       ]
     })
   }));
@@ -38,8 +45,8 @@ describe('MyApp Component', () => {
     expect(component instanceof MyApp).toBe(true);
   });
 
-  it('should have two pages', () => {
-    expect(component.pages.length).toBe(2);
+  it('should have 11 pages', () => {
+    expect(component.pages.length).toBe(11);
   });
 
 });
